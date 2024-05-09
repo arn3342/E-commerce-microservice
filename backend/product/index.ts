@@ -1,19 +1,14 @@
-require('dotenv').config();
-
 import express, { Request, Response } from 'express';
+import router from "./src/index.router"
 
-import versionHandler from './src/versionHandler'
 
 // Create Express app
 const app = express();
-const port = 5000;
+const port = 5001;
 
-app.use("/api", versionHandler)
 
 // Define a route handler for the root path
-app.get('/', (req: Request, res: Response) => {
-    res.send('Hello World!');
-});
+app.use("/api", router)
 
 // Start the Express server
 app.listen(port, () => {
